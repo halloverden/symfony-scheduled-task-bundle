@@ -1,0 +1,40 @@
+{
+    "name": "halloverden/symfony-scheduled-task-bundle",
+    "description": "Enables organization search on the norwegian Brreg registry open api",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Giannetti",
+            "email": "marco@braaains.no"
+        }
+    ],
+    "keywords": [
+        "cron",
+        "job",
+        "task",
+        "schedule",
+        "symfony",
+        "messenger"
+    ],
+    "support": {
+        "issues": "https://github.com/halloverden/symfony-scheduled-task-bundle/issues"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "symfony/http-kernel": "^4.4.7|^5.0.7",
+        "symfony/dependency-injection": "^4.4.7|^5.0.7",
+        "symfony/config": "^4.4.7|^5.0.7",
+        "symfony/console": "^4.4.7|^5.0.7",
+        "symfony/messenger": "^4.4.7|^5.0.7",
+        "dragonmantank/cron-expression": "^2.2",
+        "nesbot/carbon": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "HalloVerden\\ScheduledTaskBundle\\": ""
+        }
+    }
+}

@@ -1,0 +1,22 @@
+services:
+  HalloVerden\ScheduledTaskBundle\Interfaces\SchedulerServiceInterface:
+    class: 'HalloVerden\ScheduledTaskBundle\Services\SchedulerService'
+    arguments:
+      $tasks: !tagged 'hallo_verden_scheduler.scheduled_task'
+      $dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
+      $messageBus: '@Symfony\Component\Messenger\MessageBusInterface'
+
+  HalloVerden\ScheduledTaskBundle\Command\HVSchedulerListCommand:
+    arguments:
+      $schedulerService: '@HalloVerden\ScheduledTaskBundle\Interfaces\SchedulerServiceInterface'
+    tags:
+      - { name: 'console.command', command: 'hv:scheduler:list' }
+
+  HalloVerden\ScheduledTaskBundle\Command\HVSchedulerRunCommand:
+    arguments:
+      $schedulerService: '@HalloVerden\ScheduledTaskBundle\Interfaces\SchedulerServiceInterface'
+    tags:
+    - { name: 'console.command', command: 'hv:scheduler:run' }
+
+  HalloVerden\ScheduledTaskBundle\Interfaces\ScheduleInterface:
+    class: 'HalloVerden\ScheduledTaskBundle\Entity\SimpleCronExpression'
