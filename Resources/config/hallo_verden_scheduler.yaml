@@ -1,0 +1,5 @@
+framework:
+    messenger:
+        routing:
+            'HalloVerden\ScheduledTaskBundle\Interfaces\AsyncTaskInterface': async_task
+            'HalloVerden\ScheduledTaskBundle\Interfaces\SyncTaskInterface': sync

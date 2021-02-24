@@ -44,7 +44,34 @@ return [
 ```
 
 ## Usage
-//TODO: Write Usage for this bundle
+
+- Route your messages to the transports by defining your own messenger logic in your `config/packages/messenger.yaml` file.
+  Tasks that implement the `AsyncTaskInterface` are automatically routed to the `async_task` transport, while those that implement the `SyncTaskInterface` are routed to the `sync` transport.
+  Enabling the `failure_transport` is recommended.
+  
+
+- Create a Task class that implements the `AsyncTaskInterface` or the `SyncTaskInterface` and define the schedule and the name for the Task:
+```injectablephp
+class RandomScheduledTask implements AsyncTaskInterface {
+
+  public function getSchedule(): ScheduleInterface {
+    return SimpleCronExpression::monthly()->day(23)->hour(16)->minute(25);
+  }
+  public function getName(): string {
+    return 'random-scheduled-task';
+  }
+}
+```
+- Create a TaskHandler class for your task which will need to define an `__invoke(Taskclass $task)` method:
+```injectablephp
+class RandomScheduledTaskHandler implements TaskHandlerInterface {
+
+  public function __invoke(RandomScheduledTask $task) {
+    //...
+  }
+}
+```
+
 ---
 
 ## Contributing

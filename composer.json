@@ -29,6 +29,7 @@
         "symfony/config": "^4.4.7|^5.0.7",
         "symfony/console": "^4.4.7|^5.0.7",
         "symfony/messenger": "^4.4.7|^5.0.7",
+        "symfony/yaml": "^4.4.7|^5.0.7",
         "dragonmantank/cron-expression": "^2.2",
         "nesbot/carbon": "^2.1"
     },
