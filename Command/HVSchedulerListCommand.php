@@ -2,6 +2,7 @@
 
 namespace HalloVerden\ScheduledTaskBundle\Command;
 
+use HalloVerden\ScheduledTaskBundle\Interfaces\AsyncTaskInterface;
 use HalloVerden\ScheduledTaskBundle\Interfaces\ScheduledTaskInterface;
 use HalloVerden\ScheduledTaskBundle\Interfaces\SchedulerServiceInterface;
 use Symfony\Component\Console\Command\Command;
@@ -54,7 +55,7 @@ class HVSchedulerListCommand extends Command {
     }
 
     $table = new Table($output);
-    $table->setHeaders(['name', 'class', 'next run']);
+    $table->setHeaders(['name', 'class', 'next run', 'type']);
     $table->setRows($rows);
     $table->render();
 
@@ -70,7 +71,8 @@ class HVSchedulerListCommand extends Command {
     $nextRun = $expression->getNextRunDate()->format('c');
     $name = $task->getName();
     $class = get_class($task);
+    $type = $task instanceof AsyncTaskInterface ? 'async' : 'sync';
 
-    return [$name, $class, $nextRun];
+    return [$name, $class, $nextRun, $type];
   }
 }
