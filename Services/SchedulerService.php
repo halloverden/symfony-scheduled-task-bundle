@@ -26,10 +26,11 @@ class SchedulerService implements SchedulerServiceInterface {
    * @var SchedulerEvent
    */
   private $event;
+
   /**
    * @var MessageBusInterface
    */
-  private MessageBusInterface $messageBus;
+  private $messageBus;
 
   /**
    * SchedulerService constructor.

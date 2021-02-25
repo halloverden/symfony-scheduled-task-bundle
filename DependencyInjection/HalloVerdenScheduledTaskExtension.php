@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
 class HalloVerdenScheduledTaskExtension extends Extension implements PrependExtensionInterface {
+  const FRAMEWORK = 'framework';
 
   /**
    * @inheritDoc
@@ -28,6 +29,6 @@ class HalloVerdenScheduledTaskExtension extends Extension implements PrependExte
 
   public function prepend(ContainerBuilder $container) {
     $value = Yaml::parseFile(__DIR__ . '/../Resources/config/hallo_verden_scheduler.yaml');
-    $container->prependExtensionConfig('framework', $value['framework']);
+    $container->prependExtensionConfig(self::FRAMEWORK, $value[self::FRAMEWORK]);
   }
 }

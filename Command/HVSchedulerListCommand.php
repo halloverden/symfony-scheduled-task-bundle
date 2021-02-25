@@ -15,16 +15,18 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @package HalloVerden\ScheduledTaskBundle\Command
  */
 class HVSchedulerListCommand extends Command {
-  private $schedulerService;
-
 
   /**
-   * HVSListCommand constructor.
+   * @var SchedulerServiceInterface
+   */
+  private $schedulerService;
+
+  /**
+   * HVSchedulerListCommand constructor.
    * @param SchedulerServiceInterface $schedulerService
    */
   public function __construct(SchedulerServiceInterface $schedulerService) {
     $this->schedulerService = $schedulerService;
-
     parent::__construct();
   }
 

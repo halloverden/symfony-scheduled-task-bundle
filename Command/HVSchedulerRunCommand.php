@@ -31,7 +31,6 @@ class HVSchedulerRunCommand extends Command {
    */
   public function __construct(SchedulerServiceInterface $schedulerService) {
     $this->schedulerService = $schedulerService;
-
     parent::__construct();
   }
 
