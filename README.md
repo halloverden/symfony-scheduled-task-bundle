@@ -54,8 +54,17 @@ framework:
             'HalloVerden\ScheduledTaskBundle\Interfaces\AsyncTaskInterface': async_task
             'HalloVerden\ScheduledTaskBundle\Interfaces\SyncTaskInterface': sync
 ```
-  Enabling the `failure_transport` is recommended.
-  
+
+- Make sure all the transports you want to use are configured under `transports:` in your `config/packages/messenger.yaml` file.
+  For example, see `Resources/config/hallo_verden_scheduler.yaml`:
+```yaml
+framework:
+    messenger:
+        transports:
+            async_task: '%env(MESSENGER_TRANSPORT_DSN)%'
+            sync: 'sync://'
+```  
+N.B. Enabling the `failure_transport` is recommended.
 
 - Create a Task class that implements the `AsyncTaskInterface` or the `SyncTaskInterface` and define the schedule and the name for the Task:
 ```injectablephp
