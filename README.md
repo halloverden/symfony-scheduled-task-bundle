@@ -46,7 +46,14 @@ return [
 ## Usage
 
 - Route your messages to the transports by defining your own messenger logic in your `config/packages/messenger.yaml` file.
-  Tasks that implement the `AsyncTaskInterface` are automatically routed to the `async_task` transport, while those that implement the `SyncTaskInterface` are routed to the `sync` transport.
+  For example, see `Resources/config/hallo_verden_scheduler.yaml`:
+```yaml
+framework:
+    messenger:
+        routing:
+            'HalloVerden\ScheduledTaskBundle\Interfaces\AsyncTaskInterface': async_task
+            'HalloVerden\ScheduledTaskBundle\Interfaces\SyncTaskInterface': sync
+```
   Enabling the `failure_transport` is recommended.
   
 
@@ -71,7 +78,6 @@ class RandomScheduledTaskHandler implements TaskHandlerInterface {
   }
 }
 ```
-
 ---
 
 ## Contributing
