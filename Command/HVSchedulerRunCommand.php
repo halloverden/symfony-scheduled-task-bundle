@@ -19,11 +19,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  * @package HalloVerden\ScheduledTaskBundle\Command
  */
 class HVSchedulerRunCommand extends Command {
-
-  /**
-   * @var SchedulerServiceInterface
-   */
-  private $schedulerService;
+  private SchedulerServiceInterface $schedulerService;
 
   /**
    * HVSRunCommand constructor.
@@ -34,15 +30,14 @@ class HVSchedulerRunCommand extends Command {
     parent::__construct();
   }
 
-
-  protected function configure() {
+  protected function configure(): void {
     $this->setDescription('Run scheduled tasks')
       ->addArgument('name', InputArgument::OPTIONAL, 'Name of task to run')
       ->addOption('force', null, InputOption::VALUE_OPTIONAL, 'Run even if not scheduled', false)
       ->addOption('time', 't', InputOption::VALUE_OPTIONAL, 'Simulate time this is run at');
   }
 
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $io = new SymfonyStyle($input, $output);
 
     $time = $input->getOption('time');
